@@ -1,0 +1,154 @@
+/* pages/allPlan/allPlan.wxss */
+.container {
+  /* height: 100%; */
+  background-color: #000;
+  padding: 25rpx;
+}
+
+.container .finish {
+  background-color: #1a1a1a;
+}
+
+.container .moreFun {
+  position: fixed;
+  bottom: 0;
+  color: #ff7d03;
+  font-size: 45rpx;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #000;
+}
+
+/* 重新编辑按钮 */
+.container .moreFun .changePlan_btn {
+  position: absolute;
+  bottom: 0;
+  right: 60rpx;
+  width: 100rpx;
+  color: #ff7d03;
+  /* background-color: #ff7d03; */
+  /* border-radius: 50%; */
+  /* opacity: 0; */
+}
+
+/* .container .moreFun .changePlan {
+  padding: 0;
+  width: 100rpx;
+  position: absolute;
+  right: 30rpx;
+  bottom: 0;
+} */
+
+
+
+
+
+
+
+.popUp-btn {
+  position: fixed;
+  bottom: 40rpx;
+  right: 20rpx;
+  width: 100rpx;
+  background-color: #ff7d03;
+  border-radius: 50%;
+  /* height: 100rpx;
+  
+  text-align: center;
+  line-height: 90rpx;
+  
+  color: #fff;
+  font-size: 100rpx; */
+}
+
+.container .moreFun text {
+  padding: 0 90rpx;
+}
+
+.container .moreFun .iconfont {
+  font-size: 45rpx;
+}
+
+
+.container .finish .header {
+  padding-left: 30rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #b6b6b6;
+  font-size: 35rpx;
+  font-weight: 800;
+  background-color: #1a1a1a;
+  border-radius: 10rpx;
+}
+
+.container .finish .finish_list {
+  margin-top: 30rpx;
+}
+
+.container .finish .header text {
+  font-size: 30rpx;
+}
+
+.container .finish .header .length {
+  float: right;
+}
+
+.container .finish .header .icoBefore {
+  float: right;
+  transform: rotate(0deg);
+  transition: transform 0.5s;
+}
+
+.container .finish .header .icoAfter {
+  float: right;
+  transform: rotate(-90deg);
+  transition: transform 0.5s;
+}
+
+/* .container .finish .listUl {
+  background-color: #1a1a1a;
+} */
+
+.container .finish .listUl .listLi {
+  /* padding-bottom: 70rpx; */
+  margin-bottom: 20rpx;
+  border-radius: 10rpx;
+  /* height: 100%; */
+}
+
+.container .finish .listUl .listLi .date {
+  display: block;
+  font-size: 25rpx;
+  padding-left: 50rpx;
+
+  /* margin-top: 50rpx; */
+}
+
+/* 字母换行 */
+.container .finish .listUl .listLi .content {
+  word-break: break-all;
+}
+
+
+
+
+
+
+
+/* 选框样式 */
+
+/* 用于设置未选中时框的样式 */
+checkbox .wx-checkbox-input {
+  width: 30rpx;
+  height: 30rpx;
+  border-color: #fc606b;
+  background-color: transparent;
+  /* transition: background-color .2s; */
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  color: #6e6e6e;
+  /* 这里也可以设置对钩的颜色 */
+  background-color: #6e6e6e;
+}

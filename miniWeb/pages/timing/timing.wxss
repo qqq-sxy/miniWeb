@@ -1,0 +1,155 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  /* justify-self: center; */
+  align-items: center;
+  /* margin-top: 50rpx; */
+}
+
+.container .slider {
+  width: 95%;
+}
+
+.container .task_text {
+  display: flex;
+  flex-direction: column;
+  /* justify-self: center; */
+  align-items: center;
+  /* margin-top: 50rpx; */
+  width: 95%;
+
+}
+
+.container .task_text .task_title {
+  color: #fff;
+  font-weight: 800;
+  font-size: 40rpx;
+}
+
+.container .task_text .task_desc {
+  color: #ccc;
+}
+
+.container .cate_ul {
+  width: 95%;
+  height: 400rpx;
+  line-height: 70rpx;
+  margin-left: 2.5%;
+  margin-top: 50rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #1a1a1a;
+  border-radius: 10rpx;
+}
+
+.container .cate_ul .cate_li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200rpx;
+  height: 200rpx;
+  text-align: center;
+  font-size: 35rpx;
+  color: #ccc;
+}
+
+.container .cate_ul .cate_li .cate_icon {
+  font-size: 45rpx;
+}
+
+
+.container .task_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  margin-top: 30rpx;
+  /* background: #1a1a1a; */
+  color: #ccc;
+  font-size: 35rpx;
+}
+
+.container .task_list .task_list_input {
+  background-color: #1a1a1a;
+  width: 65%;
+  height: 90rpx;
+  border-radius: 10rpx;
+  padding-left: 30rpx;
+}
+
+.container .task_list .add_task_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 90rpx;
+  color: #fff;
+  font-size: 30rpx;
+  background-color: #ff9000;
+}
+
+
+/* 开始专注按钮 */
+.container .start {
+  width: 350rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 800;
+  border-radius: 50rpx;
+  background-color: #ff9000;
+  margin-top: 100rpx;
+}
+
+
+/* 时钟 */
+.container .clock {
+  overflow: hidden;
+  background: #E7624F;
+}
+
+.container .clock .progress {
+  width: 400rpx;
+  height: 400rpx;
+  /* background: orange; */
+  margin: 140rpx auto;
+  position: relative;
+}
+
+.progress .progress_bg,
+.progress .progress_active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400rpx;
+  height: 400rpx;
+}
+
+.progress .progress_text {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 35rpx;
+  color: #ffffff;
+  text-align: center;
+  position: absolute;
+  left: 120rpx;
+  top: 170rpx;
+}
+
+.btns .okBtn,
+.btns .pauseBtn,
+.btns .continueBtn,
+.btns .cancleBtn {
+  width: 280rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #ffffff;
+  border: 3rpx solid #ffffff;
+  border-radius: 20rpx;
+  margin: 0 auto 20rpx auto;
+}

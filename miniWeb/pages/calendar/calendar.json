@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ScheduleMap": "/components/ScheduleMap/ScheduleMap",
+    "ModalInput": "/components/ModalInput/ModalInput"
+  }
+}

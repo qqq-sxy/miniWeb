@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="showButt" bindtap="controlShow">+</view>
+  <!-- 弹出输入框 -->
+  <modal class="modal" hidden="{{hiddenModal}}" confirm-text="编辑" cancel-text="取消" bindcancel="cancelBut" bindconfirm="confirmBut">
+    <!-- 日期时间混合器 -->
+    <MixPicker class="picker" bind:getMixPickerVal="getMixPickerVal" />
+    <input class="inputB" type='text' placeholder="准备做什么？" bindinput="commentInput" focus />
+  </modal>
+</view>

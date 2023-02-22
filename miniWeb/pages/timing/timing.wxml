@@ -1,0 +1,59 @@
+<view class="container">
+  <view class="slider" hidden="{{clockShow}}">
+    <slider min="1" max="120" show-value activeColor="#ff9000" backgroundColor='#fff' block-color='#ff9000' value='{{time}}' bindchange='slideChange'></slider>
+  </view>
+  <view class='task_text' wx:if="{{!clockShow}}">
+    <view class='task_title'>选择一个任务</view>
+    <view class='task_desc'>在接下来的{{time}}分钟内，你将专注做这件事</view>
+  </view>
+
+  <!-- 任务选择 -->
+  <view class='task_cate' hidden="{{clockShow}}">
+    <view class='cate_ul'>
+      <view class=" cate_li" wx:for="{{cateArr}}" wx:key="icon" bindtap='clickCate' data-index="{{index}}">
+        <view class=" cate_icon iconfont {{item.icon}}" style="{{cateActive === index? 'color: #ff9000;' : 'color: #ccc;' }}"></view>
+        <view class="cate_text" style="{{cateActive === index? 'color: #ff9000;' : 'color: #ccc;' }}">{{item.text}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 任务列表 -->
+  <view class="task_list" wx:if="{{!clockShow}}">
+    <input class="task_list_input" type='text' focus='true' placeholder='自定义任务内容' bindinput='getval' value='{{val}}'></input>
+    <button class="add_task_list" bindtap='add'>添加</button>
+  </view>
+
+
+  <view wx:if="{{task_list_data.length > 0}}">
+    <view class="task_content" wx:for="{{task_list_data}}" wx:key="{{index}}">
+      <view class="task_content_text"> {{index+1}}. {{item}}</view>
+      <view class="task_content_btn" bindtap='del' data-index="{{index}}">完成</view>
+      <view class="task_content_btn" bindtap='start_task' data-index="{{index}}">开始计时</view>
+    </view>
+  </view>
+
+
+  <!-- 开始专注按钮 -->
+  <view class='start' bindtap='start' hidden="{{clockShow}}">
+    开始专注
+  </view>
+
+
+
+  <!-- 时钟 -->
+  <view class='clock' hidden='{{!clockShow}}' style='height:{{clockHeight}}rpx'>
+    <view class='progress'>
+      <canvas canvas-id='progress_bg' class='progress_bg'></canvas>
+      <canvas canvas-id='progress_active' class='progress_active'></canvas>
+      <view class='progress_text'>{{timeStr}}</view>
+    </view>
+    <view class='btns'>
+      <view class='okBtn' bindtap='ok' wx:if="{{okShow}}">返回</view>
+      <view class='pauseBtn' bindtap='pause' wx:if="{{pauseShow}}">暂停</view>
+      <view class='continueCancleBtn' wx:if="{{continueCancleShow}}">
+        <view class='continueBtn' bindtap='continue'>继续</view>
+        <view class='cancleBtn' bindtap='cancle'>放弃</view>
+      </view>
+    </view>
+  </view>
+</view>

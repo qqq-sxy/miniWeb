@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  /* justify-self: center; */
+  align-items: center;
+  /* margin-top: 50rpx; */
+}
+
+.container .avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600rpx;
+  /* background-color: pink; */
+}
+
+.container .avatar image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+
+.container .avatar .text {
+  color: #fff;
+  text-align: center;
+  font-size: 35rpx;
+  margin-top: 20rpx;
+}
+
+.container .signOut {
+  width: 95%;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  background-color: #1a1a1a;
+  color: #ccc;
+}
+
+.container .success {
+  width: 95%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #1a1a1a;
+  color: #f87905;
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: 700;
+  margin-bottom: 30rpx;
+}
+
+.container .charts {
+  display: flex;
+  width: 95%;
+  background-color: #1a1a1a;
+  height: 500rpx
+}

@@ -1,0 +1,49 @@
+<!--pages/allPlan/allPlan.wxml-->
+<view class="container">
+  <view class="finish" bindtap="cancelShow3">
+    <view class="header" bindtap="isShow" id="no_finish">未完成
+      <text class="iconfont icon-chevron-left {{!show1? 'icoBefore' : 'icoAfter'}}"></text>
+      <text class="length">{{nofinish_list.length}}</text>
+    </view>
+    <view class="listUl" wx:for="{{nofinish_list}}" wx:key="listId" style="display: {{show1? 'block':'none'}};">
+      <view class="listLi" bindlongpress="more_fun" id="{{item.listId}}" style="{{item.listId === listId? 'background-color:rgba(255,255,255,0.4)' : 'background-color: #1a1a1a' }}">
+        <checkbox data-status="{{item.status}}" data-type="{{item.type}}" id="{{item.listId}}" bindtap="changeStatus" color="#000" checked="{{item.status? true : false}}" />
+        <text class="content" style="color: {{item.status? '#474747':'#ccc'}}; ">{{item.content}}</text>
+        <text class="date" style="color: {{item.status? '#474747':date_color[item.type]}};">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="finish">
+    <view class="header finish_list" bindtap="isShow" id="finish">已完成
+      <text class="iconfont icon-chevron-left {{!show2? 'icoBefore' : 'icoAfter'}}"></text>
+      <text class="length">{{finish_list.length}}</text>
+    </view>
+    <view class="listUl"></view>
+  </view> -->
+
+  <view class="finish" bindtap="cancelShow3">
+    <view class="header finish_list" bindtap="isShow" id="finish">已完成
+      <text class="iconfont icon-chevron-left {{!show2? 'icoBefore' : 'icoAfter'}}"></text>
+      <text class="length">{{finish_list.length}}</text>
+    </view>
+    <view class="listUl" wx:for="{{finish_list}}" wx:key="listId" style="display: {{show2? 'block':'none'}};">
+      <view class="listLi" bindlongpress="more_fun" id="{{item.listId}}" style="{{item.listId === listId? 'background-color:rgba(255,255,255,0.4)' : 'background-color: #1a1a1a' }}">
+        <checkbox data-status="{{item.status}}" data-type="{{item.type}}" id="{{item.listId}}" bindtap="changeStatus" color="#000" checked="{{item.status? true : false}}" />
+        <text style="color: {{item.status? '#474747':'#ccc'}};">{{item.content}}</text>
+        <text class="date" style="color: {{item.status? '#474747':'#fc606b'}};">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="moreFun" style="{{show3? 'display: block' : 'display: none'}}">
+    <text bindtap="cancelShow3">取消</text>
+    <text class="iconfont icon-shanchutianchong" bindtap="deletePlan"></text>
+    <!-- 重新编辑框 -->
+    <ModalInput class="changePlan_btn" url="/users/changeFourQuadrants" bind:getModalInputVal="getModalInputVal" bindtap="changePlan" />
+    <!-- <text class="changePlan iconfont icon-wenbenbianjitianchong">
+    </text> -->
+  </view>
+
+  <!-- 弹出框 -->
+  <ModalInput class="popUp-btn" url="/users/addFourQuadrants" style="{{show3? 'display:none' : 'display：block'}}" bind:getModalInputVal="getModalInputVal" />
+</view>

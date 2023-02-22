@@ -1,0 +1,51 @@
+<view class="container">
+  <view class="importantUrgent">
+    <h2 class="colorOne iconfont icon-shuzi1">重要且紧急</h2>
+    <view class="listUl" wx:for="{{dataList1}}" wx:key="listId">
+      <view class="listLi" wx:if="{{item.type === 0}}">
+        <checkbox data-status="{{item.status}}" data-type="{{item.type}}" id="{{item.listId}}" bindtap="changeStatus" color="#000" checked="{{item.status? true : false}}" />
+        <text style="color: {{item.status? '#474747' : '#ccc'}};">{{item.content}}</text>
+        <text style="color: {{item.status? '#474747' : '#fc606b'}};">{{item.date}}</text>
+      </view>
+    </view>
+    <text class="moreBtu" bindtap="to_allPlan" data-type="0">查看更多</text>
+  </view>
+  <view class="importantUrgent">
+    <h2 class="colorTwo iconfont icon-shuzi2">重要不紧急</h2>
+    <view class="listUl" wx:for="{{dataList2}}" wx:key="listId">
+      <view class="listLi" wx:if="{{item.type === 1}}">
+        <checkbox data-status="{{item.status}}" data-type="{{item.type}}" id="{{item.listId}}" bindtap="changeStatus" color="#000" checked="{{item.status? true : false}}" />
+        <text style="color: {{item.status? '#474747' : '#ccc'}};">{{item.content}}</text>
+        <text style="color: {{item.status? '#474747' : '#fab001'}};">{{item.date}}</text>
+      </view>
+    </view>
+    <text class="moreBtu" bindtap="to_allPlan" data-type="1">查看更多</text>
+  </view>
+
+  <view class="importantUrgent">
+    <h2 class="colorThree iconfont icon-shuzi3">不重要但紧急</h2>
+    <view class="listUl" wx:for="{{dataList3}}" wx:key="listId">
+      <view class="listLi" wx:if="{{item.type === 2}}">
+        <checkbox data-status="{{item.status}}" data-type="{{item.type}}" id="{{item.listId}}" bindtap="changeStatus" color="#000" checked="{{item.status? true : false}}" />
+        <text style="color: {{item.status? '#474747' : '#ccc'}};">{{item.content}}</text>
+        <text style="color: {{item.status? '#474747' : '#5673d0'}};">{{item.date}}</text>
+      </view>
+    </view>
+    <text class="moreBtu" bindtap="to_allPlan" data-type="2">查看更多</text>
+
+  </view>
+  <view class="importantUrgent">
+    <h2 class="colorFour iconfont icon-shuzi4">不重要不紧急</h2>
+    <view class="listUl" wx:for="{{dataList4}}" wx:key="listId">
+      <view class="listLi" wx:if="{{item.type === 3}}">
+        <checkbox data-status="{{item.status}}" data-type="{{item.type}}" id="{{item.listId}}" bindtap="changeStatus" color="#000" checked="{{item.status? true : false}}" />
+        <text style="color: {{item.status? '#474747' : '#ccc'}};">{{item.content}}</text>
+        <text style="color: {{item.status? '#474747' : '#0ecb9d'}};">{{item.date}}</text>
+      </view>
+    </view>
+    <text class="moreBtu" bindtap="to_allPlan" data-type="3">查看更多</text>
+  </view>
+
+  <!-- 弹出框 -->
+  <ModalInput class="popUp_btn" url="/users/addFourQuadrants" bind:getModalInputVal="getModalInputVal" />
+</view>

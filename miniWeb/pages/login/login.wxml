@@ -1,0 +1,3 @@
+<view class="container">
+  <button type="primary" bindtap="getUserProfile">微信一键授权登录</button>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ModalInput": "/components/ModalInput/ModalInput"
+  },
+  "navigationBarTitleText": ""
+}

@@ -1,0 +1,25 @@
+.container .modal {
+  background-color: #242424;
+}
+
+.container .showButt {
+  /* position: fixed;
+  bottom: 40rpx;
+  right: 20rpx;
+  width: 100rpx; */
+  height: 100rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 90rpx;
+  /* background-color: #ff7d03; */
+  /* color: #fff; */
+  font-size: 100rpx;
+}
+
+.container .modal .picker {
+  color: #ff7d03;
+}
+
+.container .modal .inputB {
+  margin-top: 50rpx;
+}

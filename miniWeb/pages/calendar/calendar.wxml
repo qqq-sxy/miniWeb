@@ -1,0 +1,27 @@
+<!-- defaultDate 日期默认选中的日期 -->
+<ScheduleMap defaultDate="{{defaultDate}}" spot="{{spot}}" bind:dateChange="dateChange" bindtap="cancelShow3"></ScheduleMap>
+
+<view class="container" bindtap="cancelShow3">
+  <view class="noneBody" wx:if="{{list.length === 0}}">
+    你完成的很好,今天没有任务!
+  </view>
+  <view class="listUl" wx:if="{{list.length !== 0}}" wx:for="{{list}}" wx:key="listId">
+    <view class="listLi" bindlongpress="more_fun" id="{{item.listId}}" style="{{item.listId === listId? 'background-color:rgba(255,255,255,0.4)' : 'background-color: #1a1a1a' }}">
+      <checkbox data-status="{{item.status}}" data-type="{{item.type}}" id="{{item.listId}}" bindtap="changeStatus" color="#000" checked="{{item.status? true : false}}" />
+      <text class="content" style="color: {{item.status? '#474747' : '#ccc'}};">{{item.content}}</text>
+      <text class="date" style="color: {{item.status? '#474747' : '#fc606b'}};">{{item.date}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="moreFun" style="{{show3? 'display: block' : 'display: none'}}">
+  <text bindtap="cancelShow3">取消</text>
+  <text class="iconfont icon-shanchutianchong" bindtap="deletePlan"></text>
+  <!-- 重新编辑框 -->
+  <ModalInput class="changePlan_btn" url="/users/changeFourQuadrants" bind:getModalInputVal="getModalInputVal" bindtap="changePlan" />
+  <!-- <text class="changePlan iconfont icon-wenbenbianjitianchong">
+    </text> -->
+</view>
+
+<!-- 弹出框 -->
+<ModalInput class="popUp_btn" url="/users/addFourQuadrants" bind:getModalInputVal="getModalInputVal" style="{{show3? 'display:none' : 'display：block'}}" />

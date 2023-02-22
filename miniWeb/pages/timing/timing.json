@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "MixPicker": "/components/MixPicker/MixPicker"
+  },
+  "navigationBarTitleText": "番茄计时"
+}

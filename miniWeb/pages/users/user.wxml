@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="avatar">
+    <image src="{{userInfo.avatarUrl}}" alt="" />
+    <view class="text">{{userInfo.nickName}}</view>
+  </view>
+  <button class="signOut" bindtap="signOut">退出登录</button>
+  <view class="success">我的成就：总计已完成{{length}}项计划</view>
+  <view class="charts">
+    <canvas canvas-id="czhGdopuUydatsAdPiPqjallmEzoIOBC" id="czhGdopuUydatsAdPiPqjallmEzoIOBC" class="charts" bindtouchend="tap" />
+  </view>
+</view>

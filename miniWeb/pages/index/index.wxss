@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  height: 100%;
+  /*必须要 小程序默认为column*/
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #000;
+}
+
+.container .importantUrgent {
+  width: 47%;
+  height: 47%;
+  margin-bottom: 10rpx;
+  background-color: #1a1a1a;
+}
+
+.container .importantUrgent .colorOne {
+  color: #fc606b;
+}
+
+.container .importantUrgent .colorTwo {
+  color: #fab001;
+}
+
+.container .importantUrgent .colorThree {
+  color: #5673d0;
+}
+
+.container .importantUrgent .colorFour {
+  color: #0ecb9d;
+}
+
+.container .importantUrgent .listUl .listLi {
+  margin-top: 20rpx;
+}
+
+.container .importantUrgent .listUl .listLi text {
+  color: #fff;
+  font-size: 25rpx;
+  display: inline-block;
+  width: 300rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container .importantUrgent .moreBtu {
+  font-size: 30rpx;
+  color: #707070;
+  padding-left: 100rpx;
+}
+
+.popUp_btn {
+  position: fixed;
+  bottom: 40rpx;
+  right: 20rpx;
+  width: 100rpx;
+  background-color: #ff7d03;
+  /* font-size: 100rpx; */
+  border-radius: 50%;
+}
+
+/* 选框与text对齐 */
+checkbox {
+  vertical-align: middle;
+  margin-top: -20rpx;
+}
+
+/* 选框样式 */
+
+/* 用于设置未选中时框的样式 */
+checkbox .wx-checkbox-input {
+  width: 30rpx;
+  height: 30rpx;
+  border-color: #fc606b;
+  background-color: transparent;
+  /* transition: background-color .2s; */
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  color: #6e6e6e;
+  /* 这里也可以设置对钩的颜色 */
+  background-color: #6e6e6e;
+}

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "MixPicker": "/components/MixPicker/MixPicker"
+  }
+}
