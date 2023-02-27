@@ -31,6 +31,10 @@ Page({
     length: 0, //完成计划总条数
     cWidth: 750,
     cHeight: 500,
+    todayTimes: 0, //今日番茄次数
+    sumTimes: 0, //累计番茄次数
+    todayTime: 0, //今日专注时长
+    sumTime: 0, //累计专注时长
   },
 
   /**
@@ -40,7 +44,8 @@ Page({
     //从storage中获取用户信息
     this.getUserInf()
 
-
+    //获取番茄计时的所有数据
+    this.getData()
   },
 
   //从storage中获取用户信息
@@ -68,6 +73,38 @@ Page({
     this.setData({
       dataList: dataList
     })
+  },
+
+  //获取番茄计时的所有数据
+  async getData() {
+    let result = await request('/users/get_timingData')
+    let now = new Date().toLocaleDateString() //当前日期
+    let todayTimes = 0
+    let sumTimes = 0
+    let todayTime = 0
+    let sumTime = 0
+
+    let nowArr = result.data.data.map(item => {
+      if (item.status === 1 && new Date(+item.uuid).toLocaleDateString() === now) {
+        todayTime = todayTime + +item.times
+        return item
+      }
+    })
+
+    let sumArr = result.data.data.map(item => {
+      if (item.status === 1) {
+        sumTime = sumTime + +item.times
+        return item
+      }
+    })
+
+    this.setData({
+      todayTimes: nowArr.length,
+      sumTimes: sumArr.length,
+      todayTime: todayTime,
+      sumTime: sumTime
+    })
+
   },
 
   //将dataList时间格式转换成毫秒

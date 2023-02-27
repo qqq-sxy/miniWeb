@@ -65,7 +65,7 @@ exports.add_userInfo = (req, res) => {
     }
     if(result.length) { //数据库中已经有当前用户
       res.send({
-        code: 2,
+        code: 1,
         msg:'数据库中已经存在该用户信息'
       })
     } else {
@@ -140,8 +140,15 @@ exports.add_FourQuadrants = (req,res) => {
 //获取四象限所有数据
 exports.get_FourQuadrants = (req, res) => {
   let header = req.headers.authorization //获取token
-  // console.log('四象限：', header)
+  console.log('四象限：', header)
   let webToken = header.split(" ")[1]
+  if(webToken === null) {
+    res.send({
+      code: 2,
+      msg: 'token不存在'
+    })
+    return
+  }
   if(webToken.length === 0) {
     res.send({
       code: 2,
@@ -302,3 +309,131 @@ exports.change_FourQuadrants = (req,res) => {
   })
 }
 
+
+//添加专注任务
+exports.add_timingData = (req, res) => {
+  let data = req.body
+  // console.log("重新编辑四象限计划:")
+  let header = req.headers.authorization //获取token
+  // console.log('四象限：', header)
+  let webToken = header.split(" ")[1]
+  if(webToken.length === 0) {
+    res.send({
+      code: 2,
+      msg: 'token不存在'
+    })
+    return
+  }
+  let appid = tokenFun.tokenVerify(webToken).data
+  const userId = crypto.createHmac("sha1", config.tokenSecret.jwtSecretKey).update(appid).digest("hex");
+  
+  const sql = "INSERT timing_data (type, uuid, content, userId, status, times) VALUES (?,?,?,?,?,?)"
+  const timing_dataInfo = [data.type, data.uuid, data.content, userId, data.status, data.times]
+
+  db.query(sql, timing_dataInfo, (err, result) => {
+    if(err) {
+      console.log('添加专注任务失败', err)
+      res.send({
+        code: 0,
+        msg: '添加专注任务失败'
+      })
+      return 
+    }
+    console.log('------------start----------------');
+    console.log('添加专注任务成功');
+    console.log(result);
+    console.log('--------------end-----------------');
+    res.send({
+      code: 1,
+      msg:'添加专注任务成功'
+    })
+  })
+}
+
+//请求所有的专注任务
+exports.get_timingData = (req, res) => {
+  let header = req.headers.authorization //获取token
+  // console.log('四象限：', header)
+  let webToken = header.split(" ")[1]
+  if(webToken.length === 0) {
+    res.send({
+      code: 2,
+      msg: 'token不存在'
+    })
+    return
+  }
+  let appid = tokenFun.tokenVerify(webToken).data
+  const userId = crypto.createHmac("sha1", config.tokenSecret.jwtSecretKey).update(appid).digest("hex");
+  
+  //定义查询语句
+  let findSql = "SELECT * FROM  timing_data WHERE userId = '"+userId+"'"
+  db.query(findSql, (err, result) => {
+    if(err) {
+      console.log('获取专注任务所有数据查询错误：', err)
+      res.send({
+        code: 0,
+        msg:'获取专注任务所有数据查询错误'
+      })
+    }
+
+    console.log(result)
+
+    if(result.length !== 0) {
+      console.log('获取专注任务所有数据查询成功')
+      res.send({
+        code: 1,
+        msg:'获取专注任务所有数据查询成功',
+        data: result
+      })
+    } else {
+      console.log('获取专注任务所有数据查询为空')
+      res.send({
+        code: 2,
+        msg:'获取专注任务所有数据查询为空',
+        data: result
+      })
+    }
+  })
+}
+
+//完成对应的专注时间计划
+exports.change_timingData = (req, res) => {
+  let data = req.body //获取请求数据
+  let header = req.headers.authorization //获取token
+  // console.log('手腕的花纹偶分',req.body)
+
+  let webToken = header.split(' ')[1]
+  if(webToken.length === 0) {
+    res.send({
+      code: 2,
+      msg: 'token不存在'
+    })
+    return
+  }
+  let appid = tokenFun.tokenVerify(webToken).data
+  const userId = crypto.createHmac("sha1", config.tokenSecret.jwtSecretKey).update(appid).digest("hex");
+  
+  const sql = "UPDATE timing_data set status = '"+ data.status +"' WHERE userId = '"+ userId+"' and uuid = '"+ data.uuid +"' "
+  
+  // let sql = "DELETE FROM timing_data WHERE  userId = '"+ userId +"' and  uuid = '"+ data.uuid +"' "
+  // console.log("listId:", data)
+
+  db.query(sql, (err, result) => {
+    if(err) {
+      console.log('完成专注计划失败', err)
+      res.send({
+        code: 0,
+        msg: '完成专注计划失败'
+      })
+      return 
+    }
+    console.log('------------start----------------');
+    console.log('完成专注计划成功');
+    console.log(result);
+    console.log('--------------end-----------------');
+    res.send({
+      code: 1,
+      msg:'完成专注计划成功'
+    })
+  })
+}

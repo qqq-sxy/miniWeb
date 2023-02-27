@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/login/login",
     "pages/timing/timing",
     "pages/users/user",
-    "pages/index/index",
     "pages/calendar/calendar",
-    "pages/allPlan/allPlan",
-    "pages/login/login"
+    "pages/allPlan/allPlan"
   ],
   "window": {
     "backgroundTextStyle": "light",

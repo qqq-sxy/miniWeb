@@ -1,6 +1,7 @@
 // pages/index/index.js
 import request from "../../utils/request"
 import changeTime from "../../utils/dateType"
+import storageTime from "../../utils/storageTime"
 
 const app = getApp()
 
@@ -22,7 +23,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getFourQuadrent()
+    // console.log(storageTime.getStorage('token'))
+    if (storageTime.getStorage('token')) {
+      this.getFourQuadrent()
+    }
   },
 
   //获取ModalInput传来的值

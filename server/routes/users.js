@@ -25,5 +25,15 @@ router.post("/deleteFourQuadrants",router_hander.delete_FourQuadrants)
 //重新编辑四象限计划
 router.post("/changeFourQuadrants", router_hander.change_FourQuadrants)
 
+//添加专注时间计划
+router.post("/add_timingData", router_hander.add_timingData)
+
+//请求所有专注时间计划
+router.get("/get_timingData", router_hander.get_timingData)
+
+//删除对应的专注时间计划
+router.post("/change_timingData", router_hander.change_timingData)
+
+
 
 module.exports = router;

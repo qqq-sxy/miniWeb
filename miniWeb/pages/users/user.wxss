@@ -50,6 +50,40 @@
 .container .charts {
   display: flex;
   width: 95%;
+  height: 500rpx;
   background-color: #1a1a1a;
-  height: 500rpx
+  margin-bottom: 30rpx;
+}
+
+/* 番茄计时统计 */
+.container .log {
+  text-align: center;
+  width: 95%;
+  height: 450rpx;
+  border-radius: 10rpx;
+  background-color: #1a1a1a;
+  color: #f87905;
+  font-weight: 800;
+}
+
+.container .log .title {
+  font-size: 40rpx;
+}
+
+.container .log .body {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* background-color: pink; */
+}
+
+.container .log .body .box {
+  margin-top: 30rpx;
+  width: 40%;
+  height: 150rpx;
+  /* border: 1px solid #fff; */
+}
+
+.container .log .body .box .text {
+  margin-bottom: 40rpx;
 }

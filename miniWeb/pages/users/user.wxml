@@ -8,4 +8,27 @@
   <view class="charts">
     <canvas canvas-id="czhGdopuUydatsAdPiPqjallmEzoIOBC" id="czhGdopuUydatsAdPiPqjallmEzoIOBC" class="charts" bindtouchend="tap" />
   </view>
+
+  <!-- 番茄计时 -->
+  <view class="log">
+    <view class="title">番茄计时统计</view>
+    <view class="body">
+      <view class="box">
+        <view class="text">今日番茄次数</view>
+        <view class="sum">{{todayTimes}}</view>
+      </view>
+      <view class="box">
+        <view class="text">累计番茄次数</view>
+        <view class="sum">{{sumTimes}}</view>
+      </view>
+      <view class="box">
+        <view class="text">今日专注时长</view>
+        <view class="sum">{{todayTime}}</view>
+      </view>
+      <view class="box">
+        <view class="text">累计专注时长</view>
+        <view class="sum">{{sumTime}}</view>
+      </view>
+    </view>
+  </view>
 </view>

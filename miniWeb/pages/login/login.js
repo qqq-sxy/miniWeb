@@ -30,6 +30,22 @@ Page({
         let token = result.data
         //本地缓存
         storageTime.putStorage('token', token, 2 * 24 * 60 * 60)
+        //将用户信息存入数据库
+        let result2 = await request('/users/putUserInfo', res.userInfo, 'POST')
+        //代表用户信息输入数据库成功或数据库中已有该用户
+        if (result2.data.code === 1 || result2.data.code === 2) {
+          console.log(11111111)
+          wx.switchTab({
+            url: '../index/index'
+          })
+        } else if (result2.data.code === 0) {
+          wx.showToast({
+            title: result2.data.msg,
+            icon: 'err',
+            duration: 2000
+          })
+        }
+
       }
     })
   },
@@ -43,19 +59,22 @@ Page({
         this.getAppid()
         storageTime.putStorage('userInfo', res.userInfo, 2 * 24 * 60 * 60)
         //将用户信息存入数据库
-        let result = await this.putUserInfo(res.userInfo)
-        //代表用户信息输入数据库成功或数据库中已有该用户
-        if (result.data.code === 1 || result.data.code === 2) {
-          wx.switchTab({
-            url: '../index/index'
-          })
-        } else if (result.data.code === 0) {
-          wx.showToast({
-            title: result.data.msg,
-            icon: 'err',
-            duration: 2000
-          })
-        }
+        // let result = this.putUserInfo(res.userInfo)
+        // let result = await request('/users/putUserInfo', res.userInfo, 'POST')
+
+        // //代表用户信息输入数据库成功或数据库中已有该用户
+        // if (result.data.code === 1 || result.data.code === 2) {
+        //   console.log(11111111)
+        //   wx.switchTab({
+        //     url: '../index/index'
+        //   })
+        // } else if (result.data.code === 0) {
+        //   wx.showToast({
+        //     title: result.data.msg,
+        //     icon: 'err',
+        //     duration: 2000
+        //   })
+        // }
 
       },
       fail: (err) => {
@@ -68,12 +87,13 @@ Page({
     })
   },
 
-  //将用户信息存入数据库
-  async putUserInfo(userInfo) {
-    // const token = storageTime.getStorage('token')
-    let result = await request('/users/putUserInfo', userInfo, 'POST')
-    return result
-  },
+  // //将用户信息存入数据库
+  // async putUserInfo(userInfo) {
+  //   // const token = storageTime.getStorage('token')
+  //   let result = await request('/users/putUserInfo', userInfo, 'POST')
+  //   console.log('result:', result)
+  //   return result
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  width: 100%;
   /* justify-self: center; */
   align-items: center;
   /* margin-top: 50rpx; */
@@ -107,8 +108,21 @@
 
 /* 时钟 */
 .container .clock {
+  width: 100%;
   overflow: hidden;
-  background: #E7624F;
+  /* background: #E7624F; */
+  /* height: 900rpx; */
+}
+
+.container .clock .itemTitle {
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: 400rpx;
+  text-align: center;
+  /* background-color: #ff9000; */
+  color: #ff9000;
+  font-size: 40rpx;
+  font-weight: 800;
 }
 
 .container .clock .progress {
@@ -148,8 +162,45 @@
   height: 80rpx;
   line-height: 80rpx;
   text-align: center;
-  color: #ffffff;
-  border: 3rpx solid #ffffff;
+  color: #ff9000;
+  border: 3rpx solid #ff9000;
   border-radius: 20rpx;
   margin: 0 auto 20rpx auto;
+}
+
+.container .task_ {
+  width: 95%;
+  margin-top: 30rpx;
+  line-height: 90rpx;
+  color: #ccc;
+  font-size: 35rpx;
+  background-color: #1a1a1a;
+}
+
+.container .task_ .task_content {
+  height: 90rpx;
+  display: flex;
+  margin-bottom: 20rpx;
+  justify-content: space-between;
+  background-color: #1a1a1a;
+}
+
+/* .container .task_ .task_content .task_content_text {
+  width: 30%;
+} */
+
+.container .task_ .task_content .task_content_button {
+  display: flex;
+  width: 34%;
+  color: #fff;
+  text-align: center;
+  font-size: 30rpx;
+
+  /* background-color: #ff9000; */
+}
+
+.container .task_ .task_content .task_content_button .task_content_btn {
+  width: 50%;
+  border-radius: 10rpx;
+  border: 1px solid #ff9000;
 }

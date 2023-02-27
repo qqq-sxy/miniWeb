@@ -1,6 +1,6 @@
 <view class="container">
   <view class="slider" hidden="{{clockShow}}">
-    <slider min="1" max="120" show-value activeColor="#ff9000" backgroundColor='#fff' block-color='#ff9000' value='{{time}}' bindchange='slideChange'></slider>
+    <slider min="0" max="120" show-value activeColor="#ff9000" backgroundColor='#fff' block-color='#ff9000' value='{{time}}' bindchange='slideChange'></slider>
   </view>
   <view class='task_text' wx:if="{{!clockShow}}">
     <view class='task_title'>选择一个任务</view>
@@ -19,29 +19,32 @@
 
   <!-- 任务列表 -->
   <view class="task_list" wx:if="{{!clockShow}}">
-    <input class="task_list_input" type='text' focus='true' placeholder='自定义任务内容' bindinput='getval' value='{{val}}'></input>
+    <input class="task_list_input" type='text' focus='true' placeholder='自定义任务内容' bindinput='getVal' value='{{val}}'></input>
     <button class="add_task_list" bindtap='add'>添加</button>
   </view>
 
 
-  <view wx:if="{{task_list_data.length > 0}}">
-    <view class="task_content" wx:for="{{task_list_data}}" wx:key="{{index}}">
-      <view class="task_content_text"> {{index+1}}. {{item}}</view>
-      <view class="task_content_btn" bindtap='del' data-index="{{index}}">完成</view>
-      <view class="task_content_btn" bindtap='start_task' data-index="{{index}}">开始计时</view>
+  <view class="task_" wx:if="{{task_list_data.length > 0}}" hidden='{{clockShow}}'>
+    <view class="task_content" wx:for="{{task_list_data}}" wx:key="uuid">
+      <view class="task_content_text iconfont {{typeArr[item.type]}}">{{item.content}}</view>
+      <view class="task_content_button">
+        <view class="task_content_btn" bindtap='del' data-uuid="{{item.uuid}}">完成</view>
+        <view class="task_content_btn" bindtap='start_task' data-uuid="{{item.uuid}}">计时</view>
+      </view>
     </view>
   </view>
 
 
   <!-- 开始专注按钮 -->
-  <view class='start' bindtap='start' hidden="{{clockShow}}">
+  <!-- <view class='start' bindtap='start' hidden="{{clockShow}}">
     开始专注
-  </view>
+  </view> -->
 
 
 
   <!-- 时钟 -->
-  <view class='clock' hidden='{{!clockShow}}' style='height:{{clockHeight}}rpx'>
+  <view class='clock' hidden='{{!clockShow}}'>
+    <view class="itemTitle">{{titleItem}}</view>
     <view class='progress'>
       <canvas canvas-id='progress_bg' class='progress_bg'></canvas>
       <canvas canvas-id='progress_active' class='progress_active'></canvas>
@@ -56,4 +59,9 @@
       </view>
     </view>
   </view>
+</view>
+
+<!-- 播放音频 -->
+<view hidden="true">
+  <audio src="{{src}}" id="myAudio"></audio>
 </view>
